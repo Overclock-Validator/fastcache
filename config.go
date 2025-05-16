@@ -46,7 +46,7 @@ func DefaultConfig() *Config {
 func mergeConfig(size int, c *Config) *Config {
 	config := DefaultConfig()
 	// 默认MaxElementLen通过设置的内存大小计算出来
-	config.MaxElementLen = uint64(size / 512)
+	config.MaxElementLen = uint64(size / int(c.Shards))
 	// 默认是MaxElementLen的1/20
 	config.MaxBigDataLen = config.MaxElementLen / 20
 	if c != nil {
